@@ -8,6 +8,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Descomprimir proyecto.zip si existe
+        run: |
+          if [ -f proyecto.zip ]; then
+            rm -rf app/src
+            unzip -o proyecto.zip
+          fi
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
